@@ -1,23 +1,22 @@
 export const scaleFactor = 4;
 
 export const dialogueData = {
-  pc: `This is my PC. I work mostly in JavaScript/TypeScript these days.
-    I've made a couple of games in that language. I also like Golang and Python. Anyway regardless of the language, I just like programming.
-    Here is my <a href="https://github.com/jslegenddev" target="_blank">Github</a>!`,
-  "cs-degree": `This is my CS degree. I hung it on the wall because I'm proud of it. It was a very theoretical degree but I think it gave me a good foundation.`,
-  "sofa-table": `That's my sofa. I like to relax here and watch YouTube. 
-  I also make game programming tutorials on YouTube. Go sub to <a href="https://youtube.com/@jslegenddev" target="_blank">my channel</a>! (If you like the content)
-  You'll learn how I built this portfolio you're currently playing through!`,
+  pc: `This is my PC. I mostly work in JavaScript these days.
+  I have created several projects such as a website or a simple component with that language. 
+  The frameworks that I use most often are React JS and Astro JS. Anyway, I love learning new programming languages!
+  Here is my <a href="https://github.com/setografi" target="_blank">Github</a>!`,
+  "cs-degree": `This is the frame for my Bachelor's degree. Someday...no, soon I'll hang it here. This will be a very theoretical degree. From here I also learned a lot of new things and new experiences.`,
+  "sofa-table": `That's my sofa. I love relaxing here while drinking coffee. 
+  I also like creating typography designs and editing photos on <a href="https://www.instagram.com/setografi" target="_blank">my Instagram</a>! If you like the content, maybe you can visit my Instagram!`,
   tv: `That's my TV. I've been watching tech youtubers a lot recently like :
    <a href="https://www.youtube.com/@ThePrimeTimeagen" target="_blank">Theprimeagen</a>, <a href="https://www.youtube.com/@t3dotgg" target="_blank">Theo - t3.gg</a>,
   <a href="https://www.youtube.com/@PirateSoftware" target="_blank">PirateSoftware</a> (sometimes) and <a href="https://www.youtube.com/@MelkeyDev" target="_blank">Melkey</a>!`,
-  bed: `This where I sleep. Great ideas comes when I'm lying on my bed. When an idea strikes, I often have to write it down or else I won't be able to sleep because my mental energy is consumed by it.`,
-  resume: `This is my desk and on it is my resume. <a href="https://github.com/JSLegendDev/Resume/blob/main/JSLegend%20Resume-1.pdf" target="_blank">Check it out?</a>
-  Contact me at jslegend@protonmail.com if you have any interesting job opportunities!`,
+  bed: `This where I sleep. Sometimes when I have finished a project or have activities like traveling. I went straight to sleep. Sleeping is so fun! maybe this is my hobby? joking.`,
+  resume: `This is my desk and on it is my resume. <a href="https://read.cv/setografi" target="_blank">Check it out?</a> at read.cv.
+  Contact me at wahyusetotkrx18@gmail.com if you have any interesting job opportunities!`,
   projects: `Info about this portfolio : It's made with the Kaboom.js library which is a library for making games in JavaScript.
   Text is rendered with HTML/CSS. So the textbox you're currently reading is not rendered within canvas. Learn more about how to use
-  Kaboom.js by watching some of my tutorials <a href="https://youtube.com/@jslegenddev" target="_blank">here</a>.`,
-  library: `There are a lot of programming books on my shelves. There is even one in French (I also speak French btw).
-  I probably only read one of them. Who else compulsively buys technical books without ever finishing them?`,
-  exit: `If you want to exit JSLegendDev's portfolio, just close the tab.`,
+  Kaboom.js by watching tutorials from <a href="https://youtube.com/@jslegenddev" target="_blank">JSLegendDev</a>.`,
+  library: `There are many books on my shelf. I might only read one of them or repeat a book I like. Who else compulsively buys books without finishing them?`,
+  exit: `If you want to exit Setografi portfolio, just close the tab.`,
 };

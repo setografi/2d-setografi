@@ -32,7 +32,7 @@ body {
   align-items: flex-start;
   word-spacing: 0.2rem;
   filter: drop-shadow(0 0 0.75rem rgb(112, 112, 112));
-  /* overflow: auto; */
+  overflow: auto;
 }
 
 .ui-text {
@@ -42,7 +42,8 @@ body {
 
 .ui-close-btn {
   font-family: monogram, monospace;
-  border-style: none;
+  background: white;
+  border-style: solid;
   border-radius: 3px;
   padding: 1rem;
   font-size: inherit;

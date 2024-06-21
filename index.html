@@ -13,15 +13,55 @@
   <body>
     <div id="app">
       <div>
-        <p class="note">
-          <i class="ri-information-line"></i> Tap/Click around to move
-        </p>
+        <button
+          id="infoButton"
+          class="note absolute flex flex-row items-center p-2 text-lg md:text-2xl gap-1"
+        >
+          <i class="ri-information-line"></i> Info
+        </button>
+
+        <div
+          id="popup"
+          class="absolute inset-0 bg-deepAubergine bg-opacity-80 hidden items-center justify-center"
+        >
+          <div
+            class="relative bg-white p-8 border-2 border-black rounded-md max-w-md overflow-auto"
+          >
+            <h2 class="text-lg md:text-2xl mb-4">How to Move</h2>
+            <p class="mb-4 text-base md:text-xl">
+              You can move it by tapping or clicking around the screen.
+            </p>
+            <p class="mb-4 text-base md:text-xl">
+              You can also move it using the keyboard
+              <span class="text-cornflowerBlue"
+                >(if you're on a PC or laptop)</span
+              >:
+            </p>
+            <ul class="list-disc list-inside mb-4 text-base md:text-xl">
+              <li><i class="ri-arrow-up-line"></i> Move upwards</li>
+              <li><i class="ri-arrow-left-line"></i> Move to the left</li>
+              <li><i class="ri-arrow-right-line"></i> Move to the right</li>
+              <li><i class="ri-arrow-down-line"></i> Move downwards</li>
+            </ul>
+            <button
+              id="closePopup"
+              class="bg-white py-1 px-2 md:py-2 md:px-4 border-2 border-black rounded-md text-base md:text-xl transition duration-300 cursor-pointer hover:bg-paleGoldenrod"
+            >
+              Close
+            </button>
+          </div>
+        </div>
 
         <div id="textbox-container" style="display: none">
           <div id="textbox">
-            <p id="dialogue" class="ui-text"></p>
-            <div class="btn-container">
-              <button id="close" class="ui-close-btn">Close</button>
+            <p id="dialogue" class="ui-text text-base md:text-xl"></p>
+            <div class="btn-container text-base md:text-xl">
+              <button
+                id="close"
+                class="ui-close-btn bg-white py-1 px-2 md:py-2 md:px-4 outline rounded-md text-base md:text-xl transition duration-300 cursor-pointer"
+              >
+                Close
+              </button>
             </div>
           </div>
         </div>
@@ -29,5 +69,6 @@
       <canvas id="game"></canvas>
     </div>
     <script type="module" src="src/main.js"></script>
+    <script type="module" src="./src/addon.js"></script>
   </body>
 </html>

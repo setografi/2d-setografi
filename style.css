@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=DotGothic16&display=swap");
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* @font-face {
   font-family: monogram;
   src: url(monogram.ttf);
@@ -11,12 +15,13 @@ body {
   font-weight: 400;
   font-style: normal;
   overflow: hidden;
+  background-color: #311047;
 }
 
 a {
-  color: blue; /* Warna teks default */
-  text-decoration: none; /* Menghapus garis bawah tautan */
-  transition: color 0.3s ease; /* Transisi saat perubahan warna teks */
+  color: #6f6abf;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 a:hover {
@@ -36,7 +41,7 @@ a:hover {
   bottom: 2vh;
   min-height: 10vh;
   background: white;
-  border-radius: 3px;
+  border-radius: 6px;
   outline-style: solid;
   padding: 1rem;
   display: flex;
@@ -56,18 +61,11 @@ a:hover {
 
 .ui-close-btn {
   font-family: "DotGothic16", sans-serif;
-  background-color: white;
-  border-style: solid;
-  border-radius: 3px;
-  padding: 0.5rem 1rem;
   font-size: inherit;
-  transition: background-color 0.3s ease;
-  transition-duration: 300ms;
-  cursor: pointer;
 }
 
 .ui-close-btn:hover {
-  background-color: bisque;
+  background-color: #f7efba;
 }
 
 .btn-container {
@@ -76,12 +74,7 @@ a:hover {
 }
 
 .note {
-  position: absolute;
   left: 5%;
   top: 1vh;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.5rem;
   color: rgb(238, 238, 238);
 }

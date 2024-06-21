@@ -11,12 +11,12 @@ export const dialogueData = {
   tv: `That's my TV. I've been watching tech youtubers a lot recently like :
    <a href="https://www.youtube.com/@ThePrimeTimeagen" target="_blank">Theprimeagen</a>, <a href="https://www.youtube.com/@t3dotgg" target="_blank">Theo - t3.gg</a>,
   <a href="https://www.youtube.com/@PirateSoftware" target="_blank">PirateSoftware</a> (sometimes) and <a href="https://www.youtube.com/@MelkeyDev" target="_blank">Melkey</a>!`,
-  bed: `This where I sleep. Sometimes when I have finished a project or have activities like traveling. I went straight to sleep. Sleeping is so fun! maybe this is my hobby? joking.`,
-  resume: `This is my desk and on it is my resume. <a href="https://read.cv/setografi" target="_blank">Check it out?</a> at read.cv.
+  bed: `This where I sleep. Sometimes I spend a lot of time sleeping.`,
+  resume: `This is my desk and on it is my resume at read.cv <a href="https://read.cv/setografi" target="_blank">Check it out?</a>.
   Contact me at wahyusetotkrx18@gmail.com if you have any interesting job opportunities!`,
   projects: `Info about this portfolio : It's made with the Kaboom.js library which is a library for making games in JavaScript.
   Text is rendered with HTML/CSS. So the textbox you're currently reading is not rendered within canvas. Learn more about how to use
-  Kaboom.js by watching tutorials from <a href="https://youtube.com/@jslegenddev" target="_blank">JSLegendDev</a>.`,
+  Kaboom.js by watching tutorials from <a href="#">JSLegendDev</a>.`,
   library: `There are many books on my shelf. I might only read one of them or repeat a book I like. Who else compulsively buys books without finishing them?`,
   exit: `If you want to exit Setografi portfolio, just close the tab.`,
 };

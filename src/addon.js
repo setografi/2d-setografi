@@ -17,64 +17,152 @@ document.addEventListener("DOMContentLoaded", function () {
       popup.classList.add("hidden");
     }
   });
+});
 
-  // computer
-  function setupQuestionDialog(dialogElement) {
-    const yesButton = dialogElement.querySelector("#yes-button");
-    const noButton = dialogElement.querySelector("#no-button");
-    const yesPopup = document.getElementById("yes-popup");
-    const closeYesPopupButton = document.getElementById("closeYesPopup");
+// Computer
+import { createPopup, addPopupToDOM, setupPopup } from "./components/popup.js";
+import { computerSection } from "./components/computerSection.js";
 
-    if (yesButton) {
-      yesButton.addEventListener("click", () => {
-        if (yesPopup) {
-          yesPopup.classList.remove("hidden");
-          yesPopup.style.display = "flex";
-        }
-      });
-    }
+export function setupQuestionDialog(dialogElement) {
+  const yesButton = dialogElement.querySelector("#yes-button");
+  const noButton = dialogElement.querySelector("#no-button");
+  const yesPopup = document.getElementById("yes-popup");
 
-    if (noButton) {
-      noButton.addEventListener("click", () => {
-        dialogElement.style.display = "none";
-      });
-    }
-
-    if (closeYesPopupButton && yesPopup) {
-      closeYesPopupButton.addEventListener("click", () => {
-        yesPopup.classList.add("hidden");
-        yesPopup.style.display = "none";
-      });
-
-      yesPopup.addEventListener("click", (event) => {
-        if (event.target === yesPopup) {
-          yesPopup.classList.add("hidden");
-          yesPopup.style.display = "none";
-        }
-      });
-    }
+  if (yesButton && yesPopup) {
+    yesButton.addEventListener("click", () => {
+      yesPopup.classList.remove("hidden");
+      yesPopup.style.display = "flex";
+    });
   }
 
-  // Menggunakan MutationObserver untuk mendeteksi perubahan DOM
+  if (noButton) {
+    noButton.addEventListener("click", () => {
+      dialogElement.style.display = "none";
+    });
+  }
+}
+
+export function createAndSetupPopup() {
+  const popupContent = `
+
+    <div>${computerSection}</div>
+  `;
+  const popupHTML = createPopup("yes-popup", popupContent);
+  addPopupToDOM(popupHTML);
+  setupPopup("yes-popup");
+}
+
+export function initializePage() {
+  createAndSetupPopup();
+
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.type === "childList") {
         mutation.addedNodes.forEach((node) => {
-          if (node.nodeType === Node.ELEMENT_NODE) {
-            if (node.id === "question-dialog") {
-              setupQuestionDialog(node);
-            }
+          if (
+            node.nodeType === Node.ELEMENT_NODE &&
+            node.id === "question-dialog"
+          ) {
+            setupQuestionDialog(node);
           }
         });
       }
     });
   });
 
-  // Konfigurasi observer
   const config = { childList: true, subtree: true };
-
-  // Mulai observing the document dengan konfigurasi yang ditentukan
   observer.observe(document.body, config);
-});
+}
 
-// Computer
+//Computer View
+document.addEventListener("DOMContentLoaded", () => {
+  // Update clock
+  // function updateClock() {
+  //   const now = new Date();
+  //   const time = now.toLocaleTimeString([], {
+  //     hour: "2-digit",
+  //     minute: "2-digit",
+  //   });
+  //   const clockElement = document.getElementById("clock");
+  //   if (clockElement) {
+  //     clockElement.textContent = time;
+  //   } else {
+  //     console.error("Element with id 'clock' not found.");
+  //   }
+  // }
+
+  // setInterval(updateClock, 1000);
+  // updateClock();
+
+  // Toggle popup
+  window.togglePopup = function () {
+    const popcomputer = document.getElementById("popcomputer");
+    if (popcomputer) {
+      popcomputer.classList.toggle("hidden");
+    } else {
+      console.error("Element with id 'popcomputer' not found.");
+    }
+  };
+
+  // Drag functionality
+  const popcomputer = document.getElementById("popcomputer");
+  const popupHeader = document.getElementById("popup-header");
+
+  if (popcomputer && popupHeader) {
+    let isDragging = false;
+    let currentX;
+    let currentY;
+    let initialX;
+    let initialY;
+    let xOffset = 0;
+    let yOffset = 0;
+
+    popupHeader.addEventListener("mousedown", dragStart);
+    document.addEventListener("mousemove", drag);
+    document.addEventListener("mouseup", dragEnd);
+
+    function dragStart(e) {
+      initialX = e.clientX - xOffset;
+      initialY = e.clientY - yOffset;
+      isDragging = true;
+    }
+
+    function drag(e) {
+      if (isDragging) {
+        e.preventDefault();
+        currentX = e.clientX - initialX;
+        currentY = e.clientY - initialY;
+        xOffset = currentX;
+        yOffset = currentY;
+        setTranslate(currentX, currentY, popcomputer);
+      }
+    }
+
+    function dragEnd(e) {
+      initialX = currentX;
+      initialY = currentY;
+      isDragging = false;
+    }
+
+    function setTranslate(xPos, yPos, el) {
+      el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+    }
+
+    // Always enable drag when cursor is over the "x" button
+    const closeButton = popupHeader.querySelector("span:last-child");
+    if (closeButton) {
+      closeButton.addEventListener("mouseover", () => {
+        isDragging = true;
+      });
+      closeButton.addEventListener("mouseout", () => {
+        isDragging = false;
+      });
+    } else {
+      console.error("Close button not found.");
+    }
+  } else {
+    console.error(
+      "Elements with id 'popcomputer' or 'popup-header' not found."
+    );
+  }
+});

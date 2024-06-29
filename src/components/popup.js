@@ -3,16 +3,20 @@ export function createPopup(id, content) {
   return `
       <div
         id="${id}"
-        class="absolute inset-0 bg-black bg-opacity-50 w-full h-full hidden items-center justify-center"
+        class="absolute inset-0 bg-deepAubergine bg-opacity-80 w-full h-full hidden items-center justify-center"
       >
-        <div class="relative bg-white w-full h-full p-6 rounded shadow-md">
+        <div class="relative w-full max-w-3xl bg-white p-8 border-2 border-black rounded-md">
           ${content}
-          <button
-            id="close${id.charAt(0).toUpperCase() + id.slice(1)}"
-            class="bg-blue-500 text-white px-4 py-2 rounded mt-4"
-          >
-            Close
-          </button>
+
+          <div class="bg-gray-300 h-12 flex items-center justify-between px-2 border-b-2 border-x-2 border-black rounded-b-md">
+              <button
+                id="close${id.charAt(0).toUpperCase() + id.slice(1)}"
+                class="bg-white px-2 md:px-4 text-base md:text-xl transition duration-300 cursor-pointer hover:bg-paleGoldenrod rounded-sm"
+              >
+                Close
+              </button>
+              <div id="win98-clock" class="bg-white px-2 text-base md:text-xl rounded-sm"></div>
+          </div>
         </div>
       </div>
     `;

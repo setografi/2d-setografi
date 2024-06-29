@@ -75,94 +75,38 @@ export function initializePage() {
 }
 
 //Computer View
-document.addEventListener("DOMContentLoaded", () => {
-  // Update clock
-  // function updateClock() {
-  //   const now = new Date();
-  //   const time = now.toLocaleTimeString([], {
-  //     hour: "2-digit",
-  //     minute: "2-digit",
-  //   });
-  //   const clockElement = document.getElementById("clock");
-  //   if (clockElement) {
-  //     clockElement.textContent = time;
-  //   } else {
-  //     console.error("Element with id 'clock' not found.");
-  //   }
-  // }
+document.addEventListener("DOMContentLoaded", function () {
+  const win98Clock = document.getElementById("win98-clock");
+  const win98Popup = document.getElementById("win98-popup");
+  const win98CloseBtn = document.getElementById("win98-close-btn");
 
-  // setInterval(updateClock, 1000);
-  // updateClock();
+  // Update clock
+  function updateClock() {
+    const now = new Date();
+    const time = now.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    if (win98Clock) {
+      win98Clock.textContent = time;
+    }
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
 
   // Toggle popup
-  window.togglePopup = function () {
-    const popcomputer = document.getElementById("popcomputer");
-    if (popcomputer) {
-      popcomputer.classList.toggle("hidden");
-    } else {
-      console.error("Element with id 'popcomputer' not found.");
+  window.toggleWin98Popup = function () {
+    if (win98Popup) {
+      win98Popup.classList.remove("hidden");
     }
   };
 
-  // Drag functionality
-  const popcomputer = document.getElementById("popcomputer");
-  const popupHeader = document.getElementById("popup-header");
-
-  if (popcomputer && popupHeader) {
-    let isDragging = false;
-    let currentX;
-    let currentY;
-    let initialX;
-    let initialY;
-    let xOffset = 0;
-    let yOffset = 0;
-
-    popupHeader.addEventListener("mousedown", dragStart);
-    document.addEventListener("mousemove", drag);
-    document.addEventListener("mouseup", dragEnd);
-
-    function dragStart(e) {
-      initialX = e.clientX - xOffset;
-      initialY = e.clientY - yOffset;
-      isDragging = true;
-    }
-
-    function drag(e) {
-      if (isDragging) {
-        e.preventDefault();
-        currentX = e.clientX - initialX;
-        currentY = e.clientY - initialY;
-        xOffset = currentX;
-        yOffset = currentY;
-        setTranslate(currentX, currentY, popcomputer);
+  // Close popup
+  if (win98CloseBtn) {
+    win98CloseBtn.addEventListener("click", function () {
+      if (win98Popup) {
+        win98Popup.classList.add("hidden");
       }
-    }
-
-    function dragEnd(e) {
-      initialX = currentX;
-      initialY = currentY;
-      isDragging = false;
-    }
-
-    function setTranslate(xPos, yPos, el) {
-      el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
-    }
-
-    // Always enable drag when cursor is over the "x" button
-    const closeButton = popupHeader.querySelector("span:last-child");
-    if (closeButton) {
-      closeButton.addEventListener("mouseover", () => {
-        isDragging = true;
-      });
-      closeButton.addEventListener("mouseout", () => {
-        isDragging = false;
-      });
-    } else {
-      console.error("Close button not found.");
-    }
-  } else {
-    console.error(
-      "Elements with id 'popcomputer' or 'popup-header' not found."
-    );
+    });
   }
 });

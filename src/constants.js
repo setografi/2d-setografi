@@ -6,8 +6,7 @@ export const dialogueData = {
   pc: `This is my PC. I mostly work in JavaScript these days.
   I have created several projects such as a website or a simple component with that language. 
   The frameworks that I use most often are React JS and Astro JS. Anyway, I like learning new programming languages!
-  Here is my <a href="https://github.com/setografi" target="_blank">Github</a>! 
-  <div id="question-dialog""><p id="question-text">Do you want to use a PC?</p><button id="yes-button">Yes</button> <button id="no-button">No</button></div>`,
+  Here is my <a href="https://github.com/setografi" target="_blank">Github</a>! <div id="question-dialog""><p id="question-text">Do you want to use a PC?</p><button id="yes-button" class="text-cornflowerBlue transition hover:underline">Yes</button> <button id="no-button" class="text-cornflowerBlue transition hover:underline">No</button></div>`,
   "cs-degree": `This is the frame for my Bachelor's degree. Someday...no, soon I'll hang it here. This will be a very theoretical degree. From here I also learned a lot of new things and new experiences.`,
   "sofa-table": `That's my sofa. I love relaxing here while drinking coffee. 
   I also like creating typography designs and editing photos on <a href="https://www.instagram.com/setografi" target="_blank">my Instagram</a>! If you like the content, maybe you can visit my Instagram!`,

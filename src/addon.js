@@ -74,39 +74,65 @@ export function initializePage() {
   observer.observe(document.body, config);
 }
 
-//Computer View
+// Computer View
 document.addEventListener("DOMContentLoaded", function () {
-  const win98Clock = document.getElementById("win98-clock");
-  const win98Popup = document.getElementById("win98-popup");
-  const win98CloseBtn = document.getElementById("win98-close-btn");
-
-  // Update clock
-  function updateClock() {
-    const now = new Date();
-    const time = now.toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-    if (win98Clock) {
-      win98Clock.textContent = time;
-    }
-  }
-  setInterval(updateClock, 1000);
-  updateClock();
-
-  // Toggle popup
-  window.toggleWin98Popup = function () {
-    if (win98Popup) {
-      win98Popup.classList.remove("hidden");
-    }
-  };
-
-  // Close popup
-  if (win98CloseBtn) {
-    win98CloseBtn.addEventListener("click", function () {
-      if (win98Popup) {
-        win98Popup.classList.add("hidden");
+  function initializeWin98Functionality() {
+    // Update clock (kode jam tidak diubah)
+    function updateClock() {
+      const win98Clock = document.getElementById("win98-clock");
+      if (win98Clock) {
+        const now = new Date();
+        const time = now.toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        win98Clock.textContent = time;
       }
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Toggle popup
+    window.toggleWin98Popup = function () {
+      const win98Popup = document.getElementById("win98-popup");
+      if (win98Popup) {
+        win98Popup.classList.toggle("hidden");
+      }
+    };
+
+    // Function to add close button functionality
+    function addCloseButtonFunctionality() {
+      const win98CloseBtn = document.getElementById("win98-close-btn");
+      if (win98CloseBtn) {
+        win98CloseBtn.addEventListener("click", function () {
+          const win98Popup = document.getElementById("win98-popup");
+          if (win98Popup) {
+            win98Popup.classList.add("hidden");
+          }
+        });
+      }
+    }
+
+    // Add close button functionality immediately
+    addCloseButtonFunctionality();
+
+    // Set up a MutationObserver to watch for changes in the DOM
+    const observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        if (mutation.type === "childList") {
+          addCloseButtonFunctionality();
+        }
+      });
     });
+
+    // Start observing the document body for changes
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+
+  // Run initialization when DOM is ready
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeWin98Functionality);
+  } else {
+    initializeWin98Functionality();
   }
 });

@@ -80,3 +80,6 @@ a:hover {
 }
 
 /* Computer */
+.hidden {
+  display: none !important;
+}
